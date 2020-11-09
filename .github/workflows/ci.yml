@@ -19,11 +19,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-        env: # Or as an environment variable
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Build with Gradle
         run: ./gradlew build -xtest
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Publish jar to GitHub package
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
