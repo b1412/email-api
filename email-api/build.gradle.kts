@@ -133,20 +133,6 @@ publishing {
             create<MavenPublication>("mavenJava") {
                 from(components["java"])
                 artifactId = tasks.jar.get().archiveBaseName.get()
-//                pom.withXml {
-//                    val node = asNode()
-//                    val deps = configurations.api.get().allDependencies
-//                    val dep  = deps.buildDependencies
-//                    println(dep)
-//
-//                    val dependenciesNode = asNode().appendNode("dependencies")
-//                    configurations.compile.get().allDependencies.forEach {
-//                        val dependencyNode = dependenciesNode.appendNode("dependency")
-//                        dependencyNode.appendNode("groupId", it.group)
-//                        dependencyNode.appendNode("artifactId", it.name)
-//                        dependencyNode.appendNode("version", it.version)
-//                    }
-//                }
             }
 
         }
