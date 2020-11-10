@@ -2,13 +2,103 @@ package com.github.b1412.email.service
 
 import com.github.b1412.api.service.BaseService
 import com.github.b1412.email.dao.EmailLogDao
+import com.github.b1412.email.dao.EmailServerDao
 import com.github.b1412.email.entity.EmailLog
+import com.github.b1412.email.enum.TaskStatus
+import com.github.b1412.fm.FreemarkerBuilderUtil
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Pageable
+import org.springframework.mail.javamail.JavaMailSender
+import org.springframework.mail.javamail.JavaMailSenderImpl
+import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
+import java.nio.charset.Charset
 
 
 @Service
 class EmailLogService(
         @Autowired
-        val dao: EmailLogDao
-) : BaseService<EmailLog, Long>(dao = dao)
+        val dao: EmailLogDao,
+        @Autowired
+        val emailServerDao: EmailServerDao,
+        @Autowired
+        val freemarkerBuilderUtil: FreemarkerBuilderUtil
+) : BaseService<EmailLog, Long>(dao = dao) {
+    fun send(emailLog: EmailLog): Pair<String, Boolean> {
+        val emailServer = emailServerDao.findAll()[0]!!
+        val sender = createSender()
+        return try {
+            val mailMessage = sender.createMimeMessage()
+            val messageHelper = MimeMessageHelper(mailMessage, true, "UTF-8")
+            messageHelper.setFrom(emailServer.fromAddress, emailServer.fromAddress)
+            messageHelper.setTo(emailLog.sendTo!!)
+            messageHelper.setSubject(emailLog.subject!!)
+            messageHelper.setText(String(emailLog.content!!), true)
+            sender.send(mailMessage)
+            Pair("", true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            // log.error("EmailLog Send Error:" + emailLog.sendTo!!, e)
+            Pair(e.message!!, false)
+        }
+
+    }
+
+    private fun createSender(): JavaMailSender {
+        val emailServer = emailServerDao.findAll()[0]
+        val sender = JavaMailSenderImpl()
+        sender.host = emailServer.host
+        sender.port = emailServer.port
+        sender.username = emailServer.username
+        sender.password = emailServer.password
+        sender.javaMailProperties.setProperty("mail.smtp.starttls.enable", "true")
+        sender.javaMailProperties.setProperty("mail.smtp.auth", "true")
+        sender.javaMailProperties.setProperty("mail.smtp.timeout", emailServer.timeout.toString())
+        sender.javaMailProperties.setProperty("mail.smtp.ssl.trust", emailServer.host)
+        sender.javaMailProperties.setProperty("mail.smtp.socketFactory.fallback", "false")
+        return sender
+    }
+
+    fun sendSystem(orderId: String = "", subject: String, sendTo: String, ftl: String, model: Map<String, Any?>, attachment: String? = null) {
+        val m = model.toMutableMap()
+        try {
+            val emailLog = EmailLog(
+                    orderId = orderId,
+                    times = 0,
+                    sendTo = sendTo,
+                    subject = subject,
+                    content = freemarkerBuilderUtil.build(ftl, m)!!.toByteArray(Charset.forName("UTF-8")),
+                    attachment = attachment,
+                    status = TaskStatus.TODO)
+            dao.save(emailLog)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            //log.error("email send error", e)
+        }
+    }
+
+    fun execute() {
+        val list = searchByFilter(mapOf("status_in" to "TODO,FAILURE"), Pageable.unpaged()).content
+        list.forEach { item ->
+            val resultVO = send(item)
+            val result: EmailLog
+            result = when {
+                resultVO.second -> item.copy(
+                        status = TaskStatus.SUCCESS
+                ).apply {
+                    this.id = item.id
+                    this.version = item.version
+                }
+                else -> item.copy(
+                        status = TaskStatus.FAILURE,
+                        times = item.times!!.inc(),
+                        msg = resultVO.first
+                ).apply {
+                    this.id = item.id
+                    this.version = item.version
+                }
+            }
+            dao.save(result)
+        }
+    }
+}
