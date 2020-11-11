@@ -1,174 +1,230 @@
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (1,0,'Index EmailLog','/v[\\d]+/email-log','EmailLog','GET',1, 1);
+VALUES (10101,0,'Index Attachment','/v[\\d]+/attachment','Attachment','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (2,0,'Create EmailLog','/v[\\d]+/email-log','EmailLog','POST',1, 1);
+VALUES (10102,0,'Create Attachment','/v[\\d]+/attachment','Attachment','POST',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (3,0,'Read EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','GET',1, 1);
+VALUES (10103,0,'Read Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (4,0,'Update EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','PUT',1, 1);
+VALUES (10104,0,'Update Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','PUT',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (5,0,'Delete a EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','DELETE',1, 1);
+VALUES (10105,0,'Delete a Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (6,0,'Delete all EmailLog','/v[\\d]+/email-log/clear','EmailLog','DELETE',1, 1);
+VALUES (10106,0,'Delete all Attachment','/v[\\d]+/attachment/clear','Attachment','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (7,0,'Excel EmailLog','/v[\\d]+/email-log/excel','EmailLog','GET',1, 1);
+VALUES (10107,0,'Excel Attachment','/v[\\d]+/attachment/excel','Attachment','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (1,0,'Index EmailServer','/v[\\d]+/email-server','EmailServer','GET',1, 1);
+VALUES (10201,0,'Index EmailLog','/v[\\d]+/email-log','EmailLog','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (2,0,'Create EmailServer','/v[\\d]+/email-server','EmailServer','POST',1, 1);
+VALUES (10202,0,'Create EmailLog','/v[\\d]+/email-log','EmailLog','POST',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (3,0,'Read EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','GET',1, 1);
+VALUES (10203,0,'Read EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (4,0,'Update EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','PUT',1, 1);
+VALUES (10204,0,'Update EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','PUT',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (5,0,'Delete a EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','DELETE',1, 1);
+VALUES (10205,0,'Delete a EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (6,0,'Delete all EmailServer','/v[\\d]+/email-server/clear','EmailServer','DELETE',1, 1);
+VALUES (10206,0,'Delete all EmailLog','/v[\\d]+/email-log/clear','EmailLog','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (7,0,'Excel EmailServer','/v[\\d]+/email-server/excel','EmailServer','GET',1, 1);
+VALUES (10207,0,'Excel EmailLog','/v[\\d]+/email-log/excel','EmailLog','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (1,0,'Index EmailTemplate','/v[\\d]+/email-template','EmailTemplate','GET',1, 1);
+VALUES (10301,0,'Index EmailServer','/v[\\d]+/email-server','EmailServer','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (2,0,'Create EmailTemplate','/v[\\d]+/email-template','EmailTemplate','POST',1, 1);
+VALUES (10302,0,'Create EmailServer','/v[\\d]+/email-server','EmailServer','POST',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (3,0,'Read EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','GET',1, 1);
+VALUES (10303,0,'Read EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (4,0,'Update EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','PUT',1, 1);
+VALUES (10304,0,'Update EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','PUT',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (5,0,'Delete a EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','DELETE',1, 1);
+VALUES (10305,0,'Delete a EmailServer','/v[\\d]+/email-server/[\\d]+','EmailServer','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (6,0,'Delete all EmailTemplate','/v[\\d]+/email-template/clear','EmailTemplate','DELETE',1, 1);
+VALUES (10306,0,'Delete all EmailServer','/v[\\d]+/email-server/clear','EmailServer','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (7,0,'Excel EmailTemplate','/v[\\d]+/email-template/excel','EmailTemplate','GET',1, 1);
+VALUES (10307,0,'Excel EmailServer','/v[\\d]+/email-server/excel','EmailServer','GET',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10401,0,'Index EmailTemplate','/v[\\d]+/email-template','EmailTemplate','GET',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10402,0,'Create EmailTemplate','/v[\\d]+/email-template','EmailTemplate','POST',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10403,0,'Read EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','GET',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10404,0,'Update EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','PUT',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10405,0,'Delete a EmailTemplate','/v[\\d]+/email-template/[\\d]+','EmailTemplate','DELETE',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10406,0,'Delete all EmailTemplate','/v[\\d]+/email-template/clear','EmailTemplate','DELETE',1, 1);
+INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
+VALUES (10407,0,'Excel EmailTemplate','/v[\\d]+/email-template/excel','EmailTemplate','GET',1, 1);
 
 
 
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (11, 0, 1, 1, 1, 1);
+VALUES (110101, 0, 1, 1, 10101, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (12, 0, 1, 1, 2, 1);
+VALUES (110102, 0, 1, 1, 10102, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (13, 0, 1, 1, 3, 1);
+VALUES (110103, 0, 1, 1, 10103, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (14, 0, 1, 1, 4, 1);
+VALUES (110104, 0, 1, 1, 10104, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (15, 0, 1, 1, 5, 1);
+VALUES (110105, 0, 1, 1, 10105, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (16, 0, 1, 1, 6, 1);
+VALUES (110106, 0, 1, 1, 10106, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (17, 0, 1, 1, 7, 1);
+VALUES (110107, 0, 1, 1, 10107, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (31, 0, 1, 1, 1, 3);
+VALUES (310101, 0, 1, 1, 10101, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (32, 0, 1, 1, 2, 3);
+VALUES (310102, 0, 1, 1, 10102, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (33, 0, 1, 1, 3, 3);
+VALUES (310103, 0, 1, 1, 10103, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (34, 0, 1, 1, 4, 3);
+VALUES (310104, 0, 1, 1, 10104, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (35, 0, 1, 1, 5, 3);
+VALUES (310105, 0, 1, 1, 10105, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (36, 0, 1, 1, 6, 3);
+VALUES (310106, 0, 1, 1, 10106, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (37, 0, 1, 1, 7, 3);
+VALUES (310107, 0, 1, 1, 10107, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (11, 0, 1, 1, 1, 1);
+VALUES (110201, 0, 1, 1, 10201, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (12, 0, 1, 1, 2, 1);
+VALUES (110202, 0, 1, 1, 10202, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (13, 0, 1, 1, 3, 1);
+VALUES (110203, 0, 1, 1, 10203, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (14, 0, 1, 1, 4, 1);
+VALUES (110204, 0, 1, 1, 10204, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (15, 0, 1, 1, 5, 1);
+VALUES (110205, 0, 1, 1, 10205, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (16, 0, 1, 1, 6, 1);
+VALUES (110206, 0, 1, 1, 10206, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (17, 0, 1, 1, 7, 1);
+VALUES (110207, 0, 1, 1, 10207, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (31, 0, 1, 1, 1, 3);
+VALUES (310201, 0, 1, 1, 10201, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (32, 0, 1, 1, 2, 3);
+VALUES (310202, 0, 1, 1, 10202, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (33, 0, 1, 1, 3, 3);
+VALUES (310203, 0, 1, 1, 10203, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (34, 0, 1, 1, 4, 3);
+VALUES (310204, 0, 1, 1, 10204, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (35, 0, 1, 1, 5, 3);
+VALUES (310205, 0, 1, 1, 10205, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (36, 0, 1, 1, 6, 3);
+VALUES (310206, 0, 1, 1, 10206, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (37, 0, 1, 1, 7, 3);
+VALUES (310207, 0, 1, 1, 10207, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (11, 0, 1, 1, 1, 1);
+VALUES (110301, 0, 1, 1, 10301, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (12, 0, 1, 1, 2, 1);
+VALUES (110302, 0, 1, 1, 10302, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (13, 0, 1, 1, 3, 1);
+VALUES (110303, 0, 1, 1, 10303, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (14, 0, 1, 1, 4, 1);
+VALUES (110304, 0, 1, 1, 10304, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (15, 0, 1, 1, 5, 1);
+VALUES (110305, 0, 1, 1, 10305, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (16, 0, 1, 1, 6, 1);
+VALUES (110306, 0, 1, 1, 10306, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (17, 0, 1, 1, 7, 1);
+VALUES (110307, 0, 1, 1, 10307, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (31, 0, 1, 1, 1, 3);
+VALUES (310301, 0, 1, 1, 10301, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (32, 0, 1, 1, 2, 3);
+VALUES (310302, 0, 1, 1, 10302, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (33, 0, 1, 1, 3, 3);
+VALUES (310303, 0, 1, 1, 10303, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (34, 0, 1, 1, 4, 3);
+VALUES (310304, 0, 1, 1, 10304, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (35, 0, 1, 1, 5, 3);
+VALUES (310305, 0, 1, 1, 10305, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (36, 0, 1, 1, 6, 3);
+VALUES (310306, 0, 1, 1, 10306, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (37, 0, 1, 1, 7, 3);
+VALUES (310307, 0, 1, 1, 10307, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110401, 0, 1, 1, 10401, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110402, 0, 1, 1, 10402, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110403, 0, 1, 1, 10403, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110404, 0, 1, 1, 10404, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110405, 0, 1, 1, 10405, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110406, 0, 1, 1, 10406, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (110407, 0, 1, 1, 10407, 1);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310401, 0, 1, 1, 10401, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310402, 0, 1, 1, 10402, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310403, 0, 1, 1, 10403, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310404, 0, 1, 1, 10404, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310405, 0, 1, 1, 10405, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310406, 0, 1, 1, 10406, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (310407, 0, 1, 1, 10407, 3);
 
 
 
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (11, 1);
+VALUES (110101, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (12, 1);
+VALUES (110102, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (13, 1);
+VALUES (110103, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (14, 1);
+VALUES (110104, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (15, 1);
+VALUES (110105, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (16, 1);
+VALUES (110106, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (17, 1);
+VALUES (110107, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (11, 1);
+VALUES (110201, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (12, 1);
+VALUES (110202, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (13, 1);
+VALUES (110203, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (14, 1);
+VALUES (110204, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (15, 1);
+VALUES (110205, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (16, 1);
+VALUES (110206, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (17, 1);
+VALUES (110207, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (11, 1);
+VALUES (110301, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (12, 1);
+VALUES (110302, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (13, 1);
+VALUES (110303, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (14, 1);
+VALUES (110304, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (15, 1);
+VALUES (110305, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (16, 1);
+VALUES (110306, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (17, 1);
+VALUES (110307, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110401, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110402, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110403, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110404, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110405, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110406, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (110407, 1);

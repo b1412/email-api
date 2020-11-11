@@ -1,44 +1,44 @@
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110201, 0, 1, 1, 10201, 1);
+VALUES (110101, 0, 1, 1, 10101, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110202, 0, 1, 1, 10202, 1);
+VALUES (110102, 0, 1, 1, 10102, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110203, 0, 1, 1, 10203, 1);
+VALUES (110103, 0, 1, 1, 10103, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110204, 0, 1, 1, 10204, 1);
+VALUES (110104, 0, 1, 1, 10104, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110205, 0, 1, 1, 10205, 1);
+VALUES (110105, 0, 1, 1, 10105, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110206, 0, 1, 1, 10206, 1);
+VALUES (110106, 0, 1, 1, 10106, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (110207, 0, 1, 1, 10207, 1);
+VALUES (110107, 0, 1, 1, 10107, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310201, 0, 1, 1, 10201, 3);
+VALUES (310101, 0, 1, 1, 10101, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310202, 0, 1, 1, 10202, 3);
+VALUES (310102, 0, 1, 1, 10102, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310203, 0, 1, 1, 10203, 3);
+VALUES (310103, 0, 1, 1, 10103, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310204, 0, 1, 1, 10204, 3);
+VALUES (310104, 0, 1, 1, 10104, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310205, 0, 1, 1, 10205, 3);
+VALUES (310105, 0, 1, 1, 10105, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310206, 0, 1, 1, 10206, 3);
+VALUES (310106, 0, 1, 1, 10106, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
-VALUES (310207, 0, 1, 1, 10207, 3);
+VALUES (310107, 0, 1, 1, 10107, 3);
 
 
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110201, 1);
+VALUES (110101, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110202, 1);
+VALUES (110102, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110203, 1);
+VALUES (110103, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110204, 1);
+VALUES (110104, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110205, 1);
+VALUES (110105, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110206, 1);
+VALUES (110106, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
-VALUES (110207, 1);
+VALUES (110107, 1);

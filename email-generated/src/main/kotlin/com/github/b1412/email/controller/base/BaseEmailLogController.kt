@@ -1,9 +1,9 @@
 package com.github.b1412.email.controller.base
-import com.github.b1412.json.GraphRender
 
 import com.github.b1412.api.controller.BaseController
 import org.springframework.web.bind.annotation.RestController
 import com.github.b1412.email.entity.EmailLog
+import com.github.b1412.json.GraphRender
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable

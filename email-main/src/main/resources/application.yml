@@ -22,12 +22,13 @@ spring:
 
 permission:
   jwt:
-    anonymousUrls: /v1/email-server/*,/v1/email-template/send/*/**,/v1/enum/*,/v1/login,/graphiql,/graphql,/vendor/**,/v1/menu/**,/actuator/**,/v1/user/register,/v1/user/active/*,/v1/attachment/download,/v1/attachment/upload,/files/*,/images/*,/v1/find-pwd-send-log/**/*
+    anonymousUrls: /v1/email-template/send/*/**,/v1/enum/*,/v1/login,/graphiql,/graphql,/vendor/**,/v1/menu/**,/actuator/**,/v1/user/register,/v1/user/active/*,/v1/attachment/download,/v1/attachment/upload,/files/*,/images/*,/v1/find-pwd-send-log/**/*
 
 aws:
   s3:
     bucket-name: intelliware-images
-    access-key: AKIARJSV5JX5CJ54FHNT
-    secret-key: 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
+    access-key: KEY
+    secret-key: VALUE
     region-link: https://s3-ap-southeast-2.amazonaws.com
-    key: mall/
+    key: images/
+

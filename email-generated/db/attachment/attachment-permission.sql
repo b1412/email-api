@@ -1,14 +1,14 @@
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10201,0,'Index EmailLog','/v[\\d]+/email-log','EmailLog','GET',1, 1);
+VALUES (10101,0,'Index Attachment','/v[\\d]+/attachment','Attachment','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10202,0,'Create EmailLog','/v[\\d]+/email-log','EmailLog','POST',1, 1);
+VALUES (10102,0,'Create Attachment','/v[\\d]+/attachment','Attachment','POST',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10203,0,'Read EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','GET',1, 1);
+VALUES (10103,0,'Read Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','GET',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10204,0,'Update EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','PUT',1, 1);
+VALUES (10104,0,'Update Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','PUT',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10205,0,'Delete a EmailLog','/v[\\d]+/email-log/[\\d]+','EmailLog','DELETE',1, 1);
+VALUES (10105,0,'Delete a Attachment','/v[\\d]+/attachment/[\\d]+','Attachment','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10206,0,'Delete all EmailLog','/v[\\d]+/email-log/clear','EmailLog','DELETE',1, 1);
+VALUES (10106,0,'Delete all Attachment','/v[\\d]+/attachment/clear','Attachment','DELETE',1, 1);
 INSERT INTO permission (id, version, auth_key, auth_uris, entity, http_method, creator_id, modifier_id)
-VALUES (10207,0,'Excel EmailLog','/v[\\d]+/email-log/excel','EmailLog','GET',1, 1);
+VALUES (10107,0,'Excel Attachment','/v[\\d]+/attachment/excel','Attachment','GET',1, 1);

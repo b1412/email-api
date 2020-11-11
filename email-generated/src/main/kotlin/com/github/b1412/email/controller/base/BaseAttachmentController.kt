@@ -2,7 +2,7 @@ package com.github.b1412.email.controller.base
 
 import com.github.b1412.api.controller.BaseController
 import org.springframework.web.bind.annotation.RestController
-import com.github.b1412.email.entity.EmailTemplate
+import com.github.b1412.email.entity.Attachment
 import com.github.b1412.json.GraphRender
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam
 
 
 @Transactional
-abstract class BaseEmailTemplateController : BaseController<EmailTemplate, Long>() {
+abstract class BaseAttachmentController : BaseController<Attachment, Long>() {
 
-@GraphRender("emailTemplate")
+@GraphRender("attachment")
 @GetMapping
 override fun page(request: HttpServletRequest, @RequestParam filter: Map
 <String, String>, pageable: Pageable): ResponseEntity<*> {
@@ -27,22 +27,22 @@ return super.page(request, filter,pageable)
 
 }
 
-@GraphRender("emailTemplate")
+@GraphRender("attachment")
 @GetMapping("{id}")
 override fun findOne(@PathVariable id: Long, request: HttpServletRequest): ResponseEntity<*> {
 return super.findOne(id, request)
 }
 
 @PostMapping
-override fun saveOne(@Validated @RequestBody input: EmailTemplate, request: HttpServletRequest): ResponseEntity<*> {
+override fun saveOne(@Validated @RequestBody input: Attachment, request: HttpServletRequest): ResponseEntity<*> {
 return super.saveOne(input, request)
 
 }
 
 @PutMapping("{id}")
-override fun updateOne(@PathVariable id: Long, @Validated @RequestBody input: EmailTemplate, request: HttpServletRequest): ResponseEntity<*> {
+override fun updateOne(@PathVariable id: Long, @Validated @RequestBody input: Attachment, request: HttpServletRequest): ResponseEntity<*> {
 super.updateOne(id, input, request)
-return ResponseEntity.noContent().build<EmailTemplate>()
+return ResponseEntity.noContent().build<Attachment>()
 }
 
 @DeleteMapping("{id}")
