@@ -1,6 +1,5 @@
 package com.github.b1412.email.entity
 
-import com.fasterxml.jackson.annotation.JsonIgnore
 import com.github.b1412.api.entity.BaseEntity
 import com.github.b1412.email.enum.TaskStatus
 import com.github.b1412.generator.metadata.EntityFeature
