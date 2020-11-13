@@ -19,7 +19,7 @@ class EmailTemplateService(
         val emailLogService: EmailLogService
 ) : BaseService<EmailTemplate, Long>(dao = dao) {
     fun send(templateName: String, emails: String, model: MutableMap<String, String>, pdfFileName: String = "") {
-        val emailTemplate = dao.searchByFilter(mapOf("name" to templateName), Pageable.unpaged()).content[0]
+        val emailTemplate = dao.searchByFilter(mapOf("name_op" to templateName), Pageable.unpaged()).content[0]
         if (emailTemplate == null) {
             throw  IllegalArgumentException("Template $templateName does not exist.")
         }
