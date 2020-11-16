@@ -24,7 +24,7 @@ noArg {
 }
 
 group = "com.github.b1412"
-version = "0.1.7"
+version = "0.1.8"
 
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
@@ -51,7 +51,7 @@ dependencies {
     val arrowVersion = "0.11.0"
     api(project(":email-generated"))
 
-    implementation("com.github.b1412:api-common:faef4d83e4")
+    implementation("com.github.b1412:api-common:e2e01a9bbb")
     implementation("com.github.b1412:permission-api:0.1.2")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")

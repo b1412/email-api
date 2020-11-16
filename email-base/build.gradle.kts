@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "com.github.b1412"
-version = "0.1.7"
+version = "0.1.8"
 
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
@@ -41,7 +41,7 @@ repositories {
 
 dependencies {
     val arrowVersion = "0.11.0"
-    implementation("com.github.b1412:api-common:faef4d83e4")
+    implementation("com.github.b1412:api-common:e2e01a9bbb")
     implementation("com.github.b1412:kotlin-code-generator-meta:8c10be3699")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

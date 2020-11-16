@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.RequestParam
-
+import org.springframework.web.util.UriComponentsBuilder
 
 @Transactional
 abstract class BaseEmailServerController : BaseController<EmailServer, Long>() {
@@ -34,8 +34,8 @@ return super.findOne(id, request)
 }
 
 @PostMapping
-override fun saveOne(@Validated @RequestBody input: EmailServer, request: HttpServletRequest): ResponseEntity<*> {
-return super.saveOne(input, request)
+override fun saveOne(@Validated @RequestBody input: EmailServer, request: HttpServletRequest, uriComponent: UriComponentsBuilder): ResponseEntity<*> {
+return super.saveOne(input, request, uriComponent)
 
 }
 

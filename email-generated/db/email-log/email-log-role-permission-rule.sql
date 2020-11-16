@@ -26,6 +26,20 @@ INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id
 VALUES (310206, 0, 1, 1, 10206, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
 VALUES (310207, 0, 1, 1, 10207, 3);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410201, 0, 1, 1, 10201, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410202, 0, 1, 1, 10202, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410203, 0, 1, 1, 10203, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410204, 0, 1, 1, 10204, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410205, 0, 1, 1, 10205, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410206, 0, 1, 1, 10206, 4);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (410207, 0, 1, 1, 10207, 4);
 
 
 INSERT INTO role_permission_rule (role_permission_id, rule_id)

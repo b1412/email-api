@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     api(project(":email-api"))
-    implementation("com.github.b1412:api-common:faef4d83e4")
+    implementation("com.github.b1412:api-common:e2e01a9bbb")
     implementation("com.github.b1412:permission-api:0.1.2")
 
     val arrowVersion = "0.11.0"
