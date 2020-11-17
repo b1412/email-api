@@ -52,7 +52,7 @@ dependencies {
     api(project(":email-generated"))
 
     implementation("com.github.b1412:api-common:2cbab0a995")
-    implementation("com.github.b1412:permission-api:0.1.7")
+    implementation("com.github.b1412:permission-api:0.1.10")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
