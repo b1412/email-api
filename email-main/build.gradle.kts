@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     val kotlinVersion = "1.4.10"
     jacoco
-    id("org.springframework.boot") version "2.4.0-RC1"
+    id("org.springframework.boot") version "2.4.0"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
@@ -39,7 +39,7 @@ repositories {
 dependencies {
     api(project(":email-api"))
     implementation("com.github.b1412:api-common:e2e01a9bbb")
-    implementation("com.github.b1412:permission-api:0.1.2")
+    implementation("com.github.b1412:permission-api:0.1.7")
 
     val arrowVersion = "0.11.0"
     implementation("org.jetbrains.kotlin:kotlin-reflect")
