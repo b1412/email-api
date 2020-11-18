@@ -19,35 +19,30 @@ import org.springframework.web.util.UriComponentsBuilder
 @Transactional
 abstract class BaseEmailTemplateController : BaseController<EmailTemplate, Long>() {
 
-@GraphRender("emailTemplate")
-@GetMapping
-override fun page(request: HttpServletRequest, @RequestParam filter: Map
-<String, String>, pageable: Pageable): ResponseEntity<*> {
-return super.page(request, filter,pageable)
+    @GraphRender("emailTemplate")
+    @GetMapping
+    override fun page(request: HttpServletRequest, @RequestParam filter: Map<String, String>, pageable: Pageable): ResponseEntity<*> {
+        return super.page(request, filter,pageable)
+    }
 
-}
+    @GraphRender("emailTemplate")
+    @GetMapping("{id}")
+    override fun findOne(@PathVariable id: Long, request: HttpServletRequest): ResponseEntity<*> {
+        return super.findOne(id, request)
+    }
 
-@GraphRender("emailTemplate")
-@GetMapping("{id}")
-override fun findOne(@PathVariable id: Long, request: HttpServletRequest): ResponseEntity<*> {
-return super.findOne(id, request)
-}
+    @PostMapping
+    override fun saveOne(@Validated @RequestBody input: EmailTemplate, request: HttpServletRequest, uriComponent: UriComponentsBuilder): ResponseEntity<*> {
+        return super.saveOne(input, request, uriComponent)
+    }
 
-@PostMapping
-override fun saveOne(@Validated @RequestBody input: EmailTemplate, request: HttpServletRequest, uriComponent: UriComponentsBuilder): ResponseEntity<*> {
-return super.saveOne(input, request, uriComponent)
+    @PutMapping("{id}")
+    override fun updateOne(@PathVariable id: Long, @Validated @RequestBody input: EmailTemplate, request: HttpServletRequest): ResponseEntity<*> {
+        return super.updateOne(id, input, request)
+    }
 
-}
-
-@PutMapping("{id}")
-override fun updateOne(@PathVariable id: Long, @Validated @RequestBody input: EmailTemplate, request: HttpServletRequest): ResponseEntity<*> {
-super.updateOne(id, input, request)
-return ResponseEntity.noContent().build<EmailTemplate>()
-}
-
-@DeleteMapping("{id}")
-override fun deleteOne(@PathVariable id: Long, request: HttpServletRequest): ResponseEntity<*> {
-return super.deleteOne(id,request)
-
-}
+    @DeleteMapping("{id}")
+    override fun deleteOne(@PathVariable id: Long, request: HttpServletRequest): ResponseEntity<*> {
+       return super.deleteOne(id,request)
+    }
 }

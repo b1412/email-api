@@ -13,6 +13,20 @@ VALUES (110306, 0, 1, 1, 10306, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
 VALUES (110307, 0, 1, 1, 10307, 1);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210301, 0, 1, 1, 10301, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210302, 0, 1, 1, 10302, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210303, 0, 1, 1, 10303, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210304, 0, 1, 1, 10304, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210305, 0, 1, 1, 10305, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210306, 0, 1, 1, 10306, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
+VALUES (210307, 0, 1, 1, 10307, 2);
+INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
 VALUES (310301, 0, 1, 1, 10301, 3);
 INSERT INTO role_permission (id, version, creator_id, modifier_id, permission_id, role_id)
 VALUES (310302, 0, 1, 1, 10302, 3);
@@ -56,3 +70,17 @@ INSERT INTO role_permission_rule (role_permission_id, rule_id)
 VALUES (110306, 1);
 INSERT INTO role_permission_rule (role_permission_id, rule_id)
 VALUES (110307, 1);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210301, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210302, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210303, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210304, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210305, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210306, 5);
+INSERT INTO role_permission_rule (role_permission_id, rule_id)
+VALUES (210307, 5);
