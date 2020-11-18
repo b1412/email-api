@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     val kotlinVersion = "1.4.10"
-    id("org.springframework.boot") version "2.3.0.RELEASE"
+    id("org.springframework.boot") version "2.4.0"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "com.github.b1412"
-version = "0.1.11"
+version = "0.1.12"
 
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
@@ -37,12 +37,21 @@ repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
     maven(url = "https://jitpack.io")
+    maven {
+        url = uri("https://maven.pkg.github.com/b1412/permission-api")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 dependencies {
     val arrowVersion = "0.11.0"
-    implementation("com.github.b1412:api-common:2cbab0a995")
+    implementation("com.github.b1412:api-common:5ba35feadd")
+    implementation("com.github.b1412:permission-base:0.1.10")
     implementation("com.github.b1412:kotlin-code-generator-meta:8c10be3699")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     springboot()

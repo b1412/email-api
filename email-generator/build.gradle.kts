@@ -4,7 +4,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 plugins {
     val kotlinVersion = "1.4.10"
     jacoco
-    id("org.springframework.boot") version "2.3.0.RELEASE"
+    id("org.springframework.boot") version "2.4.0"
     id("io.spring.dependency-management") version "1.0.10.RELEASE"
     kotlin("jvm") version kotlinVersion
 }
@@ -15,19 +15,30 @@ val bootJar: BootJar by tasks
 bootJar.enabled = false
 jar.enabled = true
 
-version = "0.1.11"
+version = "0.1.12"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
     maven(url = "https://jitpack.io")
+    maven {
+        url = uri("https://maven.pkg.github.com/b1412/permission-api")
+        credentials {
+            username = System.getenv("GITHUB_ACTOR")
+            password = System.getenv("GITHUB_TOKEN")
+        }
+    }
 }
 
 dependencies {
     implementation(project(":email-base"))
-    implementation("com.github.b1412:api-common:2cbab0a995")
+    implementation("com.github.b1412:api-common:5ba35feadd")
+    implementation("com.github.b1412:permission-base:0.1.10")
     implementation("com.github.b1412:kotlin-code-generator:f606c3539e")
+    implementation("com.github.b1412:generator-tasks:f3f6ac72da")
+
+
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
