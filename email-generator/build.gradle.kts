@@ -15,7 +15,7 @@ val bootJar: BootJar by tasks
 bootJar.enabled = false
 jar.enabled = true
 
-version = "0.1.12"
+version = "0.1.13"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -33,10 +33,9 @@ repositories {
 
 dependencies {
     implementation(project(":email-base"))
-    implementation("com.github.b1412:api-common:5ba35feadd")
     implementation("com.github.b1412:permission-base:0.1.10")
-    implementation("com.github.b1412:kotlin-code-generator:f606c3539e")
-    implementation("com.github.b1412:generator-tasks:f3f6ac72da")
+    implementation("com.github.b1412:kotlin-code-generator:790498a17d")
+    implementation("com.github.b1412:generator-tasks:43b2e409ac")
 
 
     implementation("org.springframework.boot:spring-boot-starter-validation")
