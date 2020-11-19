@@ -15,7 +15,7 @@ val bootJar: BootJar by tasks
 bootJar.enabled = false
 jar.enabled = true
 
-version = "0.1.16"
+version = "0.1.17"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     implementation(project(":email-base"))
-    implementation("com.github.b1412:permission-base:0.1.13")
+    implementation("com.github.b1412:permission-base:0.1.14")
     implementation("com.github.b1412:kotlin-code-generator:790498a17d")
     implementation("com.github.b1412:generator-tasks:43b2e409ac")
 
