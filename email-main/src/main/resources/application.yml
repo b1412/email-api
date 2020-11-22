@@ -32,4 +32,8 @@ aws:
     region-link: LINK
     key: KEY
 
+email:
+  cron: 0 0/1 * * * *
+
+
 

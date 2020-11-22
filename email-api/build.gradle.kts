@@ -24,7 +24,7 @@ noArg {
 }
 
 group = "com.github.b1412"
-version = "0.1.18"
+version = "0.1.19"
 
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
@@ -70,6 +70,7 @@ dependencies {
     implementation("commons-fileupload:commons-fileupload:1.3.1")
 
     implementation("com.amazonaws:aws-java-sdk-s3:1.11.210")
+    implementation("com.amazonaws:aws-java-sdk-ses:1.11.210")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {

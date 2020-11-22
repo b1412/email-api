@@ -16,15 +16,13 @@ import javax.persistence.*
 data class EmailLog(
 
         val subject: String? = null,
-        @Lob
-        @Column(length = 100000)
-        val content: ByteArray? = null,
+        @Column(columnDefinition = "MEDIUMTEXT")
+        val content: String? = null,
         val sendTo: String? = null,
         @Enumerated(value = EnumType.STRING)
         val status: TaskStatus? = null,
         var times: Int? = null,
         @Column(columnDefinition = "TEXT")
         val msg: String? = null,
-        val orderId: String? = null,
         val attachment: String? = null
 ) : BaseEntity(), Serializable

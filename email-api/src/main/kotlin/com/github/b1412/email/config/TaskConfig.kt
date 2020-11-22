@@ -14,9 +14,8 @@ class TaskConfig(
         @Autowired
         val emailLogService: EmailLogService
 ) {
-    @Scheduled(fixedRate = 60_000L)
+    @Scheduled(cron = "\${email.cron}")
     fun sendEmail() {
-        println("email send")
         SecurityContextHolder.getContext().authentication = AnonAuthentication()
         emailLogService.execute()
     }

@@ -1,5 +1,10 @@
 package com.github.b1412.email.service
 
+import com.amazonaws.auth.AWSStaticCredentialsProvider
+import com.amazonaws.auth.BasicAWSCredentials
+import com.amazonaws.regions.Regions
+import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder
+import com.amazonaws.services.simpleemail.model.*
 import com.github.b1412.api.service.BaseService
 import com.github.b1412.email.dao.EmailLogDao
 import com.github.b1412.email.dao.EmailServerDao
@@ -26,22 +31,29 @@ class EmailLogService(
 ) : BaseService<EmailLog, Long>(dao = dao) {
     fun send(emailLog: EmailLog): Pair<String, Boolean> {
         val emailServer = emailServerDao.findAll()[0]!!
-        val sender = createSender()
         return try {
-            val mailMessage = sender.createMimeMessage()
-            val messageHelper = MimeMessageHelper(mailMessage, true, "UTF-8")
-            messageHelper.setFrom(emailServer.fromAddress, emailServer.fromAddress)
-            messageHelper.setTo(emailLog.sendTo!!)
-            messageHelper.setSubject(emailLog.subject!!)
-            messageHelper.setText(String(emailLog.content!!), true)
-            sender.send(mailMessage)
+            val sesClient = AmazonSimpleEmailServiceClientBuilder.standard()
+                    .withCredentials(
+                            AWSStaticCredentialsProvider(
+                                    BasicAWSCredentials(emailServer.username, emailServer.password)
+                            )
+                    ).withRegion(Regions.AP_SOUTHEAST_2).build()
+            val request = SendEmailRequest()
+                    .withDestination(
+                            Destination().withToAddresses(emailLog.sendTo))
+                    .withMessage(Message()
+                            .withBody(Body()
+                                    .withHtml(Content()
+                                            .withCharset("UTF-8").withData(emailLog.content!!)))
+                            .withSubject(Content()
+                                    .withCharset("UTF-8").withData(emailLog.subject)))
+                    .withSource(emailServer.fromAddress)
+            sesClient.sendEmail(request)
             Pair("", true)
         } catch (e: Exception) {
             e.printStackTrace()
-            // log.error("EmailLog Send Error:" + emailLog.sendTo!!, e)
             Pair(e.message!!, false)
         }
-
     }
 
     private fun createSender(): JavaMailSender {
@@ -61,20 +73,15 @@ class EmailLogService(
 
     fun sendSystem(orderId: String = "", subject: String, sendTo: String, ftl: String, model: Map<String, Any?>, attachment: String? = null) {
         val m = model.toMutableMap()
-        try {
-            val emailLog = EmailLog(
-                    orderId = orderId,
-                    times = 0,
-                    sendTo = sendTo,
-                    subject = subject,
-                    content = freemarkerBuilderUtil.build(ftl, m)!!.toByteArray(Charset.forName("UTF-8")),
-                    attachment = attachment,
-                    status = TaskStatus.TODO)
-            dao.save(emailLog)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            //log.error("email send error", e)
-        }
+        val emailLog = EmailLog(
+                times = 0,
+                sendTo = sendTo,
+                subject = subject,
+                content = freemarkerBuilderUtil.build(ftl, m)!!,
+                attachment = attachment,
+                status = TaskStatus.TODO)
+        dao.save(emailLog)
+
     }
 
     fun execute() {
