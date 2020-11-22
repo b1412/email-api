@@ -26,10 +26,10 @@ permission:
 
 aws:
   s3:
-    bucket-name: intelliware-images
-    access-key: AKIARJSV5JX5CJ54FHNT
-    secret-key: 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
-    region-link: https://s3-ap-southeast-2.amazonaws.com
-    key: mall/
+    bucket-name: BUCKET
+    access-key: ACCESS_KEY
+    secret-key: SECRET_KEY
+    region-link: LINK
+    key: KEY
 
 
