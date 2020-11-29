@@ -15,7 +15,7 @@ val bootJar: BootJar by tasks
 bootJar.enabled = false
 jar.enabled = true
 
-version = "0.1.19"
+version = "0.1.20"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -33,24 +33,14 @@ repositories {
 
 dependencies {
     implementation(project(":email-base"))
-    implementation("com.github.b1412:permission-base:0.1.15")
-    implementation("com.github.b1412:kotlin-code-generator:790498a17d")
-    implementation("com.github.b1412:generator-tasks:43b2e409ac")
-
-
-    implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    val arrowVersion = "0.11.0"
-    implementation("io.arrow-kt:arrow-core:$arrowVersion")
-    implementation("io.arrow-kt:arrow-syntax:$arrowVersion")
-    implementation("com.google.guava:guava:30.0-jre")
-    implementation("mysql:mysql-connector-java:6.0.5")
+    api("com.github.b1412:permission-base:0.1.22")
+    api("com.github.b1412:kotlin-code-generator:790498a17d")
+    api("com.github.b1412:generator-tasks:43b2e409ac")
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict","-Xallow-result-return-type")
+        freeCompilerArgs = listOf("-Xjsr305=strict", "-Xallow-result-return-type")
         jvmTarget = "11"
     }
 }

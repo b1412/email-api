@@ -6,9 +6,15 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.runApplication
 
 @SpringBootApplication(
-        scanBasePackages = ["com.github.b1412.*"],
+        scanBasePackages = [
+            "com.github.b1412.*"
+        ],
         exclude = [
             SecurityAutoConfiguration::class,
             ApplicationAvailabilityAutoConfiguration::class]
 )
 class EmailApp
+
+fun main(args: Array<String>) {
+    runApplication<EmailApp>(*args)
+}
