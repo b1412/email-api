@@ -27,7 +27,7 @@ allOpen {
 }
 
 group = "com.github.b1412"
-version = "0.1.20"
+version = "0.1.21"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 
@@ -47,7 +47,6 @@ repositories {
 dependencies {
     api(project(":email-base"))
     api("com.github.b1412:permission-base:0.1.22")
-
 }
 
 tasks.withType<KotlinCompile> {

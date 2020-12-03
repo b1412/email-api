@@ -15,7 +15,7 @@ data class EmailTemplate(
         var name: String = "",
         var subject: String = "",
         var layout: String = "",
-        @Column(columnDefinition = "TEXT")
+        @Column(columnDefinition = "text")
         var content: String = "",
 
         var type: String? = null,

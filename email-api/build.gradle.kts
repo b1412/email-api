@@ -24,7 +24,7 @@ noArg {
 }
 
 group = "com.github.b1412"
-version = "0.1.20"
+version = "0.1.21"
 
 val jar: Jar by tasks
 val bootJar: BootJar by tasks

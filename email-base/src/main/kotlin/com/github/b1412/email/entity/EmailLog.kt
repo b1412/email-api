@@ -14,15 +14,14 @@ import javax.persistence.*
 @DynamicInsert
 
 data class EmailLog(
-
-        val subject: String? = null,
-        @Column(columnDefinition = "MEDIUMTEXT")
-        val content: String? = null,
-        val sendTo: String? = null,
-        @Enumerated(value = EnumType.STRING)
-        val status: TaskStatus? = null,
-        var times: Int? = null,
-        @Column(columnDefinition = "TEXT")
-        val msg: String? = null,
-        val attachment: String? = null
+    val subject: String? = null,
+    @Column(columnDefinition = "text")
+    val content: String? = null,
+    val sendTo: String? = null,
+    @Enumerated(value = EnumType.STRING)
+    val status: TaskStatus? = null,
+    var times: Int? = null,
+    @Column(columnDefinition = "text")
+    val msg: String? = null,
+    val attachment: String? = null
 ) : BaseEntity(), Serializable
