@@ -23,16 +23,11 @@ noArg {
     annotation("javax.persistence.MappedSuperclass")
 }
 
-group = "com.github.b1412"
-version = "0.1.21"
-
 val jar: Jar by tasks
 val bootJar: BootJar by tasks
 
 bootJar.enabled = false
 jar.enabled = true
-
-java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
     mavenCentral()

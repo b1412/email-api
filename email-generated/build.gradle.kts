@@ -25,12 +25,6 @@ allOpen {
     annotation("javax.persistence.Embeddable")
     annotation("javax.persistence.MappedSuperclass")
 }
-
-group = "com.github.b1412"
-version = "0.1.21"
-java.sourceCompatibility = JavaVersion.VERSION_11
-
-
 repositories {
     mavenCentral()
     maven { url = uri("https://repo.spring.io/milestone") }
