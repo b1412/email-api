@@ -42,9 +42,11 @@ repositories {
     }
 }
 
+val permissionVersion: String by project
+
 dependencies {
     api(project(":email-generated"))
-    api("com.github.b1412:permission-api:0.1.22")
+    api("com.github.b1412:permission-api:${permissionVersion}")
 
     api("com.amazonaws:aws-java-sdk-ses:1.11.908")
     api("commons-fileupload:commons-fileupload:1.3.1")

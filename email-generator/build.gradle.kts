@@ -28,9 +28,11 @@ repositories {
     }
 }
 
+val permissionVersion: String by project
+
 dependencies {
     implementation(project(":email-base"))
-    api("com.github.b1412:permission-base:0.1.22")
+    api("com.github.b1412:permission-base:${permissionVersion}")
     api("com.github.b1412:kotlin-code-generator:790498a17d")
     api("com.github.b1412:generator-tasks:43b2e409ac")
 }

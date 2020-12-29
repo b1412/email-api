@@ -2,6 +2,7 @@ package com.github.b1412.email.controller.custom
 
 import com.github.b1412.aws.s3.AmazonService
 import com.github.b1412.email.service.AttachmentService
+import com.github.b1412.generator.metadata.PermissionFeatureIgnore
 import org.apache.commons.io.IOUtils
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -9,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile
 import java.io.FileInputStream
 import javax.servlet.http.HttpServletResponse
 
-
+@PermissionFeatureIgnore
 @RestController
 @RequestMapping("/v1/attachment")
 class AttachmentControllerCustom(
