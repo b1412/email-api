@@ -4,10 +4,10 @@ spring:
   application:
     name: email
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: cannon
-    url: jdbc:mysql://mysql:3306/cannon?characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://postgres:5432/postgres
   jpa:
     hibernate:
       ddl-auto: update

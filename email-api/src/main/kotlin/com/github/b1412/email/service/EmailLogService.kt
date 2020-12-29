@@ -15,39 +15,46 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.JavaMailSenderImpl
-import org.springframework.mail.javamail.MimeMessageHelper
 import org.springframework.stereotype.Service
-import java.nio.charset.Charset
 
 
 @Service
 class EmailLogService(
-        @Autowired
-        val dao: EmailLogDao,
-        @Autowired
-        val emailServerDao: EmailServerDao,
-        @Autowired
-        val freemarkerBuilderUtil: FreemarkerBuilderUtil
+    @Autowired
+    val dao: EmailLogDao,
+    @Autowired
+    val emailServerDao: EmailServerDao,
+    @Autowired
+    val freemarkerBuilderUtil: FreemarkerBuilderUtil
 ) : BaseService<EmailLog, Long>(dao = dao) {
     fun send(emailLog: EmailLog): Pair<String, Boolean> {
         val emailServer = emailServerDao.findAll()[0]!!
         return try {
             val sesClient = AmazonSimpleEmailServiceClientBuilder.standard()
-                    .withCredentials(
-                            AWSStaticCredentialsProvider(
-                                    BasicAWSCredentials(emailServer.username, emailServer.password)
-                            )
-                    ).withRegion(Regions.AP_SOUTHEAST_2).build()
+                .withCredentials(
+                    AWSStaticCredentialsProvider(
+                        BasicAWSCredentials(emailServer.username, emailServer.password)
+                    )
+                ).withRegion(Regions.AP_SOUTHEAST_2).build()
             val request = SendEmailRequest()
-                    .withDestination(
-                            Destination().withToAddresses(emailLog.sendTo))
-                    .withMessage(Message()
-                            .withBody(Body()
-                                    .withHtml(Content()
-                                            .withCharset("UTF-8").withData(emailLog.content!!)))
-                            .withSubject(Content()
-                                    .withCharset("UTF-8").withData(emailLog.subject)))
-                    .withSource(emailServer.fromAddress)
+                .withDestination(
+                    Destination().withToAddresses(emailLog.sendTo)
+                )
+                .withMessage(
+                    Message()
+                        .withBody(
+                            Body()
+                                .withHtml(
+                                    Content()
+                                        .withCharset("UTF-8").withData(emailLog.content!!)
+                                )
+                        )
+                        .withSubject(
+                            Content()
+                                .withCharset("UTF-8").withData(emailLog.subject)
+                        )
+                )
+                .withSource(emailServer.fromAddress)
             sesClient.sendEmail(request)
             Pair("", true)
         } catch (e: Exception) {
@@ -71,15 +78,23 @@ class EmailLogService(
         return sender
     }
 
-    fun sendSystem(orderId: String = "", subject: String, sendTo: String, ftl: String, model: Map<String, Any?>, attachment: String? = null) {
+    fun sendSystem(
+        orderId: String = "",
+        subject: String,
+        sendTo: String,
+        ftl: String,
+        model: Map<String, Any?>,
+        attachment: String? = null
+    ) {
         val m = model.toMutableMap()
         val emailLog = EmailLog(
-                times = 0,
-                sendTo = sendTo,
-                subject = subject,
-                content = freemarkerBuilderUtil.build(ftl, m)!!,
-                attachment = attachment,
-                status = TaskStatus.TODO)
+            times = 0,
+            sendTo = sendTo,
+            subject = subject,
+            content = freemarkerBuilderUtil.build(ftl, m)!!,
+            attachment = attachment,
+            status = TaskStatus.TODO
+        )
         dao.save(emailLog)
 
     }
@@ -91,21 +106,28 @@ class EmailLogService(
             val result: EmailLog
             result = when {
                 resultVO.second -> item.copy(
-                        status = TaskStatus.SUCCESS
+                    status = TaskStatus.SUCCESS
                 ).apply {
                     this.id = item.id
                     this.version = item.version
                 }
                 else -> item.copy(
-                        status = TaskStatus.FAILURE,
-                        times = item.times!!.inc(),
-                        msg = resultVO.first
+                    status = TaskStatus.FAILURE,
+                    times = item.times!!.inc(),
+                    msg = resultVO.first
                 ).apply {
                     this.id = item.id
                     this.version = item.version
                 }
             }
             dao.save(result)
+        }
+    }
+
+    fun resend(id: Long) {
+        dao.findById(id).ifPresent {
+            it.status = TaskStatus.TODO
+            dao.save(it)
         }
     }
 }

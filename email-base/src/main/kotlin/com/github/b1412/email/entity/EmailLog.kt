@@ -19,7 +19,7 @@ data class EmailLog(
     val content: String? = null,
     val sendTo: String? = null,
     @Enumerated(value = EnumType.STRING)
-    val status: TaskStatus? = null,
+    var status: TaskStatus? = null,
     var times: Int? = null,
     @Column(columnDefinition = "text")
     val msg: String? = null,
