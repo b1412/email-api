@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/v1/email-log")
 class EmailLogControllerCustom(
     val emailLogService: EmailLogService
-) : BaseEmailLogController() {
+) {
     @PostMapping("/resend/{id}")
     @PermissionFeatures(
         PermissionFeature(role = "admin", rule = "all")
