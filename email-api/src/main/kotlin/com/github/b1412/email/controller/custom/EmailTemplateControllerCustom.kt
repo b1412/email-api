@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class EmailTemplateControllerCustom(
     val emailTemplateService: EmailTemplateService
 ) {
-    @GetMapping("/send/{id}/{email}")
+    @PostMapping("/send/{id}/{email}")
     @PermissionFeatures(
         PermissionFeature(role = "admin", rule = "all")
     )
