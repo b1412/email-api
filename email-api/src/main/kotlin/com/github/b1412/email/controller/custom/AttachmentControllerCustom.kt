@@ -1,6 +1,7 @@
 package com.github.b1412.email.controller.custom
 
 import com.github.b1412.aws.s3.AmazonService
+import com.github.b1412.email.enum.AttachmentType
 import com.github.b1412.email.service.AttachmentService
 import com.github.b1412.generator.metadata.PermissionFeatureIgnore
 import org.apache.commons.io.IOUtils
@@ -34,9 +35,9 @@ class AttachmentControllerCustom(
 
     @PostMapping("/upload")
     @ResponseBody
-    fun create(file: MultipartFile): ResponseEntity<*> {
+    fun create(type: AttachmentType, file: MultipartFile): ResponseEntity<*> {
         return attachmentService
-            .createFile(file)
+            .createFile(type, file)
             .fold(
                 { ResponseEntity.ok(it) },
                 { attachment ->
