@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class EmailServerService(
-        @Autowired
-        val dao: EmailServerDao
+    @Autowired
+    val dao: EmailServerDao
 ) : BaseService<EmailServer, Long>(dao = dao)

@@ -1,6 +1,5 @@
 package com.github.b1412.email.controller.custom
 
-import com.github.b1412.email.controller.base.BaseEmailLogController
 import com.github.b1412.email.service.EmailLogService
 import com.github.b1412.generator.metadata.PermissionFeature
 import com.github.b1412.generator.metadata.PermissionFeatures

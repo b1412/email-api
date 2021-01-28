@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.*
 class EmailTemplateControllerCustom(
     val emailTemplateService: EmailTemplateService
 ) {
-    @PostMapping("/send/{id}/{email}")
+    @PostMapping("/send/{id}")
     @PermissionFeatures(
         PermissionFeature(role = "admin", rule = "all")
     )
-    fun sendTestEmail(@PathVariable id: Long, @PathVariable email: String) {
-        emailTemplateService.send(id, email, mutableMapOf())
+    fun sendTestEmail(@PathVariable id: Long, @RequestBody vo: TestEmailVo) {
+        val map = vo.params.split("&").map {
+            val (key, value) = it.split("=")
+            Pair(key, value)
+        }.toMap().toMutableMap()
+        emailTemplateService.send(id, vo.email, map)
     }
 }
+
+data class TestEmailVo(val email: String, val params: String)

@@ -9,6 +9,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class PdfTemplateService(
-@Autowired
-val dao: PdfTemplateDao
+    @Autowired
+    val dao: PdfTemplateDao
 ) : BaseService<PdfTemplate, Long>(dao = dao)

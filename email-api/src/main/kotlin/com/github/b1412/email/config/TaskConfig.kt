@@ -11,8 +11,8 @@ import org.springframework.security.core.context.SecurityContextHolder
 @Configuration
 @EnableScheduling
 class TaskConfig(
-        @Autowired
-        val emailLogService: EmailLogService
+    @Autowired
+    val emailLogService: EmailLogService
 ) {
     @Scheduled(cron = "\${email.cron}")
     fun sendEmail() {

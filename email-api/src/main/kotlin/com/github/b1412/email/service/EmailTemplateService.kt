@@ -15,8 +15,8 @@ import java.io.StringWriter
 
 @Service
 class EmailTemplateService(
-        val dao: EmailTemplateDao,
-        val emailLogService: EmailLogService
+    val dao: EmailTemplateDao,
+    val emailLogService: EmailLogService
 ) : BaseService<EmailTemplate, Long>(dao = dao) {
     fun send(templateName: String, emails: String, model: MutableMap<String, String>, pdfFileName: String = "") {
         val emailTemplate = dao.searchByFilter(mapOf("name_eq" to templateName), Pageable.unpaged()).content[0]
@@ -40,12 +40,12 @@ class EmailTemplateService(
             val transformedTemplate = out.toString()
             println(transformedTemplate)
             emailLogService.sendSystem(
-                    subject = emailTemplate.subject,
-                    sendTo = email,
-                    ftl = "/email/" + emailTemplate.layout,
-                    model = mapOf(
-                            "content" to transformedTemplate
-                    ),
+                subject = emailTemplate.subject,
+                sendTo = email,
+                ftl = "/email/" + emailTemplate.layout,
+                model = mapOf(
+                    "content" to transformedTemplate
+                ),
 //                                attachment = if (attachments.isEmpty()) {
 //                                        null
 //                                } else {

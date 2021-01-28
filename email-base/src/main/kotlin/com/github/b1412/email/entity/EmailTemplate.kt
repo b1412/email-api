@@ -12,14 +12,15 @@ import javax.persistence.Entity
 @DynamicUpdate
 @DynamicInsert
 data class EmailTemplate(
-        var name: String = "",
-        var subject: String = "",
-        var layout: String = "",
-        @Column(columnDefinition = "text")
-        var content: String = "",
+    var name: String = "",
+    var subject: String = "",
+    var layout: String = "",
+    @Column(columnDefinition = "text")
+    var content: String = "",
 
-        var type: String? = null,
+    var type: String? = null,
 
-        val notes: String? = null
+    val notes: String? = null,
+    val params: String? = null
 
 ) : BaseEntity()
