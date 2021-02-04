@@ -29,12 +29,12 @@ repositories {
 }
 
 val permissionVersion: String by project
+val tasksVersion: String by project
 
 dependencies {
     implementation(project(":email-base"))
-    api("com.github.b1412:permission-base:${permissionVersion}")
-    api("com.github.b1412:kotlin-code-generator:f113dc7ee5")
-    api("com.github.b1412:generator-tasks:4d100935dc")
+    implementation("com.github.b1412:permission-base:${permissionVersion}")
+    implementation("com.github.b1412:generator-tasks:${tasksVersion}")
 }
 
 tasks.withType<KotlinCompile> {
