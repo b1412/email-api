@@ -17,6 +17,6 @@ class TaskConfig(
     @Scheduled(cron = "\${email.cron}")
     fun sendEmail() {
         SecurityContextHolder.getContext().authentication = AnonAuthentication()
-        emailLogService.execute()
+        emailLogService.readFromQueue()
     }
 }

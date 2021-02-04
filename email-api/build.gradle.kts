@@ -48,9 +48,10 @@ dependencies {
     api(project(":email-generated"))
     api("com.github.b1412:permission-api:${permissionVersion}")
 
-    api("com.amazonaws:aws-java-sdk-ses:1.11.908")
+    api("com.amazonaws:aws-java-sdk-ses:1.11.947")
+    api("com.amazonaws:aws-java-sdk-sqs:1.11.947")
     api("commons-fileupload:commons-fileupload:1.3.1")
-
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 

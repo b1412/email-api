@@ -22,18 +22,37 @@ spring:
 
 permission:
   jwt:
-    anonymousUrls: /v1/email-template/send/*/**,/v1/enum/*,/v1/login,/graphiql,/graphql,/vendor/**,/v1/menu/**,/actuator/**,/v1/user/register,/v1/user/active/*,/v1/attachment/download,/v1/attachment/upload,/files/*,/images/*,/v1/find-pwd-send-log/**/*
-
+    anonymousUrls:
+      - /v1/login
+      - /v1/user/register
+      - /v1/user/active/*
+      - /v1/uniqueness/user/email
+      - /v1/password-recovery/reset/*
+      - /v1/password-recovery/apply/*
+      - /v1/password-recovery/status/*
+      - /v1/attachment/download
+      - /v1/attachment/upload
+      - /v1/dynamic-enum/*/**
+      - /v1/permission/entities
+      ## for testing purpose
+      - /v1/search/*/**
+      - /v1/aws-gateway/*/**
+      - /v1/notification/*/**
+      - /v1/content-es/*/**
+      - /v1/s3/*/**
+      ## Temp
+      - /v1/excel/*/**
+      - /v1/tree/import
+      - /v1/sqs/*/**
 aws:
   s3:
-    bucket-name: BUCKET
-    access-key: ACCESS_KEY
-    secret-key: SECRET_KEY
-    region-link: LINK
-    key: KEY
-
+    bucket-name: 1
+    access-key: 2
+    secret-key: 3
+    region-link: https://s3-ap-southeast-2.amazonaws.com
+    key: upload/
+  email:
+    send-from: operation@aedut.com
+    queue-url: https://sqs.ap-southeast-2.amazonaws.com/145278190990/email
 email:
   cron: 0 0/1 * * * *
-
-
-

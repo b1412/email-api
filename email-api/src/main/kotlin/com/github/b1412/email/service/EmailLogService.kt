@@ -1,58 +1,101 @@
 package com.github.b1412.email.service
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider
-import com.amazonaws.auth.BasicAWSCredentials
-import com.amazonaws.regions.Regions
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder
+import com.amazonaws.services.simpleemail.AmazonSimpleEmailService
 import com.amazonaws.services.simpleemail.model.*
+import com.amazonaws.services.simpleemail.model.Message
+import com.amazonaws.services.sqs.AmazonSQS
+import com.amazonaws.services.sqs.model.*
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.b1412.api.service.BaseService
+import com.github.b1412.email.config.AmazonEmailProperties
 import com.github.b1412.email.dao.EmailLogDao
 import com.github.b1412.email.dao.EmailServerDao
 import com.github.b1412.email.entity.EmailLog
 import com.github.b1412.email.enum.TaskStatus
+import com.github.b1412.extenstions.responseEntityOk
 import com.github.b1412.fm.FreemarkerBuilderUtil
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.http.ResponseEntity
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.stereotype.Service
+import java.util.*
 
 
 @Service
 class EmailLogService(
-    @Autowired
     val dao: EmailLogDao,
-    @Autowired
     val emailServerDao: EmailServerDao,
-    @Autowired
-    val freemarkerBuilderUtil: FreemarkerBuilderUtil
+    val freemarkerBuilderUtil: FreemarkerBuilderUtil,
+    val objectMapper: ObjectMapper,
+    val sqsClient: AmazonSQS,
+    val sesClient: AmazonSimpleEmailService,
+    val emailLogDao: EmailLogDao,
+    val emailProperties: AmazonEmailProperties
 ) : BaseService<EmailLog, Long>(dao = dao) {
+    fun sendToQueue(emailLog: EmailLog): ResponseEntity<*> {
+        emailLog.status = TaskStatus.TODO
+        val p = emailLogDao.save(emailLog)
+        val messageAttributes: MutableMap<String, MessageAttributeValue> = HashMap()
+        messageAttributes["AttributeOne"] = MessageAttributeValue()
+            .withStringValue("This is an attribute")
+            .withDataType("String")
+        val sendMessageStandardQueue = SendMessageRequest()
+            .withQueueUrl("https://sqs.ap-southeast-2.amazonaws.com/145278190990/email")
+            .withMessageBody(objectMapper.writeValueAsString(p))
+            .withDelaySeconds(30)
+            .withMessageAttributes(messageAttributes)
+
+        val result = sqsClient.sendMessage(sendMessageStandardQueue)
+        println(result)
+        return emailLog.responseEntityOk()
+    }
+
+    fun readFromQueue() {
+        val receiveMessageRequest = ReceiveMessageRequest("https://sqs.ap-southeast-2.amazonaws.com/145278190990/email")
+            .withWaitTimeSeconds(20)
+            .withMaxNumberOfMessages(10)
+
+        val sqsMessages: List<com.amazonaws.services.sqs.model.Message> =
+            sqsClient.receiveMessage(receiveMessageRequest).messages
+        sqsMessages.forEach {
+            val message: EmailLog = objectMapper.readValue(it.body)
+            val request = SendEmailRequest()
+                .withDestination(
+                    Destination().withToAddresses(message.sendTo)
+                )
+                .withMessage(
+                    Message()
+                        .withBody(Body().withHtml(Content().withCharset("UTF-8").withData(message.content!!)))
+                        .withSubject(Content().withCharset("UTF-8").withData(message.subject))
+                )
+                .withSource(emailProperties.sendFrom)
+            sesClient.sendEmail(request)
+            val emailLog = emailLogDao.findByIdOrNull(message.id)
+            if (emailLog != null) {
+                emailLog.status = TaskStatus.SUCCESS
+                emailLogDao.save(emailLog)
+            }
+            val deleteMessageRequest = DeleteMessageRequest()
+            deleteMessageRequest.queueUrl = emailProperties.queueUrl
+            deleteMessageRequest.receiptHandle = it.receiptHandle
+            val response = sqsClient.deleteMessage(deleteMessageRequest)
+        }
+    }
+
     fun send(emailLog: EmailLog): Pair<String, Boolean> {
         val emailServer = emailServerDao.findAll()[0]!!
         return try {
-            val sesClient = AmazonSimpleEmailServiceClientBuilder.standard()
-                .withCredentials(
-                    AWSStaticCredentialsProvider(
-                        BasicAWSCredentials(emailServer.username, emailServer.password)
-                    )
-                ).withRegion(Regions.AP_SOUTHEAST_2).build()
             val request = SendEmailRequest()
                 .withDestination(
                     Destination().withToAddresses(emailLog.sendTo)
                 )
                 .withMessage(
                     Message()
-                        .withBody(
-                            Body()
-                                .withHtml(
-                                    Content()
-                                        .withCharset("UTF-8").withData(emailLog.content!!)
-                                )
-                        )
-                        .withSubject(
-                            Content()
-                                .withCharset("UTF-8").withData(emailLog.subject)
-                        )
+                        .withBody(Body().withHtml(Content().withCharset("UTF-8").withData(emailLog.content!!)))
+                        .withSubject(Content().withCharset("UTF-8").withData(emailLog.subject))
                 )
                 .withSource(emailServer.fromAddress)
             sesClient.sendEmail(request)

@@ -33,8 +33,8 @@ val permissionVersion: String by project
 dependencies {
     implementation(project(":email-base"))
     api("com.github.b1412:permission-base:${permissionVersion}")
-    api("com.github.b1412:kotlin-code-generator:790498a17d")
-    api("com.github.b1412:generator-tasks:43b2e409ac")
+    api("com.github.b1412:kotlin-code-generator:f113dc7ee5")
+    api("com.github.b1412:generator-tasks:4d100935dc")
 }
 
 tasks.withType<KotlinCompile> {
