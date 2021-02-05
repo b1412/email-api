@@ -38,7 +38,6 @@ class EmailTemplateService(
             t.process(model, out)
 
             val transformedTemplate = out.toString()
-            println(transformedTemplate)
             emailLogService.sendSystem(
                 subject = emailTemplate.subject,
                 sendTo = email,

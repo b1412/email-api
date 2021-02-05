@@ -2,9 +2,11 @@ package com.github.b1412.email.service
 
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService
 import com.amazonaws.services.simpleemail.model.*
-import com.amazonaws.services.simpleemail.model.Message
 import com.amazonaws.services.sqs.AmazonSQS
-import com.amazonaws.services.sqs.model.*
+import com.amazonaws.services.sqs.model.DeleteMessageRequest
+import com.amazonaws.services.sqs.model.MessageAttributeValue
+import com.amazonaws.services.sqs.model.ReceiveMessageRequest
+import com.amazonaws.services.sqs.model.SendMessageRequest
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.github.b1412.api.service.BaseService
@@ -138,7 +140,8 @@ class EmailLogService(
             attachment = attachment,
             status = TaskStatus.TODO
         )
-        dao.save(emailLog)
+        sendToQueue(emailLog)
+        // dao.save(emailLog)
 
     }
 
