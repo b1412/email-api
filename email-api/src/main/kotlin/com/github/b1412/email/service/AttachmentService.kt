@@ -15,13 +15,13 @@ class AttachmentService(
     val dao: AttachmentDao,
     val uploadUtil: UploadUtil
 ) : BaseService<Attachment, Long>(dao = dao) {
-    fun createFile(type: AttachmentType = AttachmentType.UPLOAD, tempFile: MultipartFile): Either<String, Attachment> {
+    fun createFile(type: AttachmentType? = AttachmentType.UPLOAD, tempFile: MultipartFile): Either<String, Attachment> {
         if (tempFile.isEmpty) {
             return Either.left("no file uploaded")
         }
         val name = uploadUtil.write(tempFile, "")
         val attachment = Attachment(
-            type = type,
+            type = type!!,
             name = name,
             contentType = tempFile.contentType!!,
             size = tempFile.size,

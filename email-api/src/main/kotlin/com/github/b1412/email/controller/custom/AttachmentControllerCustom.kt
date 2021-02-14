@@ -35,7 +35,7 @@ class AttachmentControllerCustom(
 
     @PostMapping("/upload")
     @ResponseBody
-    fun create(type: AttachmentType, file: MultipartFile): ResponseEntity<*> {
+    fun create(type: AttachmentType?, file: MultipartFile): ResponseEntity<*> {
         return attachmentService
             .createFile(type, file)
             .fold(
