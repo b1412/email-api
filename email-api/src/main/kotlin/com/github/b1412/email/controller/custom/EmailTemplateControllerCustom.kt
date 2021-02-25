@@ -23,4 +23,7 @@ class EmailTemplateControllerCustom(
     }
 }
 
-data class TestEmailVo(val email: String, val params: String)
+data class TestEmailVo(
+    val email: String = "",
+    val params: String = ""
+)
