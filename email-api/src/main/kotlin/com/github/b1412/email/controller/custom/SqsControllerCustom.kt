@@ -10,11 +10,12 @@ import com.github.b1412.email.dao.EmailServerDao
 import com.github.b1412.email.entity.EmailLog
 import com.github.b1412.email.service.EmailLogService
 import com.github.b1412.extenstions.responseEntityOk
+import com.github.b1412.generator.metadata.PermissionFeatureIgnore
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
-
+@PermissionFeatureIgnore
 @RestController
 @RequestMapping("/v1/sqs")
 class SqsControllerCustom(
