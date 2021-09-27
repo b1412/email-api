@@ -32,7 +32,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish jar to GitHub package
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
