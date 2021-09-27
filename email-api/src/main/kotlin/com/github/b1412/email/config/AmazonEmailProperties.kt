@@ -12,6 +12,12 @@ data class AmazonEmailProperties(
     var sendFrom: String? = null,
 
     @NotBlank
-    var queueUrl: String? = null
+    var queueUrl: String? = null,
+
+    @NotBlank
+    var accessKey: String? = null,
+
+    @NotBlank
+    var secretKey: String? = null
 
 )

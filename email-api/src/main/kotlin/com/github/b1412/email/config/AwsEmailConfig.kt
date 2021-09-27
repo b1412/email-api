@@ -7,7 +7,6 @@ import com.amazonaws.services.simpleemail.AmazonSimpleEmailService
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder
 import com.amazonaws.services.sqs.AmazonSQS
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder
-import com.github.b1412.aws.s3.AmazonProperties
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -15,7 +14,7 @@ import org.springframework.context.annotation.Configuration
 @Configuration
 class AwsEmailConfig {
     @Autowired
-    private val amazonProperties: AmazonProperties? = null
+    private val amazonProperties: AmazonEmailProperties? = null
 
     @Bean
     fun sqsClient(): AmazonSQS {
