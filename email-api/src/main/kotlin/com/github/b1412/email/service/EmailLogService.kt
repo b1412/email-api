@@ -23,7 +23,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.JavaMailSenderImpl
 import org.springframework.stereotype.Service
-import java.util.*
 
 
 @Service
@@ -45,7 +44,7 @@ class EmailLogService(
             .withStringValue("This is an attribute")
             .withDataType("String")
         val sendMessageStandardQueue = SendMessageRequest()
-            .withQueueUrl("https://sqs.ap-southeast-2.amazonaws.com/145278190990/email")
+            .withQueueUrl(emailProperties.queueUrl)
             .withMessageBody(objectMapper.writeValueAsString(p))
             .withDelaySeconds(30)
             .withMessageAttributes(messageAttributes)
@@ -56,7 +55,7 @@ class EmailLogService(
     }
 
     fun readFromQueue() {
-        val receiveMessageRequest = ReceiveMessageRequest("https://sqs.ap-southeast-2.amazonaws.com/145278190990/email")
+        val receiveMessageRequest = ReceiveMessageRequest(emailProperties.queueUrl)
             .withWaitTimeSeconds(20)
             .withMaxNumberOfMessages(10)
 
